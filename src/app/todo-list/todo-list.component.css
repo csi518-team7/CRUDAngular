@@ -1,2 +1,129 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
-@import '~open-iconic/font/css/open-iconic-bootstrap.css';
+
+  .page-title {
+    text-align: center;
+  }
+  
+  
+  .todo-content {
+    max-width: 1000px;
+    width: 100%;
+    height:100%;
+    margin: 0 auto;
+    margin-top: 60px;
+    background-color: #fff;
+    padding: 15px; 
+    box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+  }
+
+  
+  .form-control:focus {
+    border: 1px solid #626262;
+  }
+  
+ .form-control {
+    width: 100%;
+    height: 50px;
+  }
+  
+ .todo-create {
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  
+.alert-danger {
+    padding-left: 15px;
+    font-size: 14px;
+    color: red;
+    padding-top: 5px;
+  }
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: -15px;
+    margin-right: -15px;
+    overflow-y: scroll;
+  }
+  
+  ul li {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #E8E8E8;
+  }
+  
+  ul li span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+.todo-title {
+    width: calc(100% - 160px);
+    margin-left: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+.todo-completed {
+    display: inline-block;
+    text-align: center;
+    width:35px;
+    height:35px;
+    cursor: pointer;
+  }
+  
+.todo-completed i {
+    font-size: 20px;
+  }
+  
+.todo-actions, .edit-actions {
+      float: right;
+  }
+  
+.todo-actions i, .edit-actions i {
+      font-size: 17px;
+  }
+  
+.todo-actions a, .edit-actions a {
+    display: inline-block;
+    text-align: center;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+  }
+  
+.todo-actions a:hover, .edit-actions a:hover {
+    background-color: #f4f4f4;
+  }
+  
+.todo-edit input {
+    width: calc(100% - 80px);
+    height: 35px;
+  }
+.edit-actions {
+    text-align: right;
+  }
+  
+  .no-todos {
+    text-align: center;
+  }
+  
+  .toggle-completed-checkbox:before {
+    content: 'check_box_outline_blank';
+  }
+  
+  li.completed .toggle-completed-checkbox:before {
+    content: 'check_box';
+  }
+  
+  li.completed .todo-title {
+    text-decoration: line-through;
+    color: #757575;
+  }
+  
+  li.completed i {
+    color: #757575;
+  }
