@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Todo } from '../todo/todo.component';
 import { TodoService } from '../todo.service';
 import { NgForm } from '@angular/forms';
-
+import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -29,6 +30,7 @@ export class TodoListComponent implements OnInit {
   }
 
   createTodo(todoForm: NgForm): void {
+    console.log(this.newTodo);
     this.todoService.createTodo(this.newTodo)
       .then(createTodo => {        
         todoForm.reset();

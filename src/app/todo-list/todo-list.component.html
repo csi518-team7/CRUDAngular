@@ -1,25 +1,150 @@
 <div class="todo-content">
   <h1 class="page-title">Admin Dashboard</h1>
+ 
   <div class="todo-create">
     <form #todoForm="ngForm" (ngSubmit)="createTodo(todoForm)" novalidate>
-      <input type="text" id="title" class="form-control" placeholder="Type a todo and press enter..." required name="title"
-        [(ngModel)]="newTodo.title" #title="ngModel">
-      <div *ngIf="title.errors && title.dirty" class="alert alert-danger">
-        <div [hidden]="!title.errors.required">
-          Title is required.
+      <div class="form-group">
+          <label for="title">Event title: </label>
+          <input type="text" id="title" class="form-control" placeholder="Type event title" required name="title"
+          [(ngModel)]="newTodo.title" #title="ngModel">
+        <div *ngIf="title.errors && title.dirty" class="alert alert-danger">
+          <div [hidden]="!title.errors.required">
+            Title is required.
+          </div>
         </div>
       </div>
+
+ 
+
+
+      <div class="form-group">
+          <label for="price">Ticket price: </label>
+          <input type="number" id="price" class="form-control" placeholder="Type event price" required name="price"
+          [(ngModel)]="newTodo.price" #address="ngModel" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" > 
+      </div>
+
+ 
+
+      <div class="form-group">
+          <label for="eventDate">Event date: </label>
+          <input type="date" id="eventDate" class="form-control" placeholder="yyyy-MM-dd" required name="eventDate"
+          [(ngModel)]="newTodo.eventDate" #eventDate="ngModel" min="2018-01-01" max="2028-12-31"> 
+
+      </div>
+
+      <!-- <div class="form-group">
+          <label for="startTime">Start time: </label>
+          <input type="time" id="startTime" class="form-control" placeholder="HH:mm:ss" required name="startTime"
+          [(ngModel)]="newTodo.startTime" #startTime="ngModel"> 
+          <div *ngIf="startTime.errors && startTime.dirty" class="alert alert-danger">
+              <div [hidden]="!startTime.errors.required">
+                  startTime is required.
+              </div>
+            </div>
+
+      </div> -->
+<!-- 
+      <div class="form-group">
+          <label for="endTime">End time: </label>
+          <input type="time" id="endTime" class="form-control" placeholder="HH:mm:ss" required name="endTime"
+          [(ngModel)]="newTodo.endTime" #endTime="ngModel"> 
+          <div *ngIf="endTime.errors && endTime.dirty" class="alert alert-danger">
+              <div [hidden]="!endTime.errors.required">
+                  endTime is required.
+              </div>
+            </div>
+      </div> -->
+
+      <div class="form-group">
+          <label for="address">Address: </label>
+          <input type="address" id="address" class="form-control" placeholder="Type event address" required name="address"
+          [(ngModel)]="newTodo.address" #address="ngModel"> 
+
+          <div *ngIf="address.errors && address.dirty" class="alert alert-danger">
+              <div [hidden]="!address.errors.required">
+                  address is required.
+              </div>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label for="city">City: </label>
+          <input type="text" id="city" class="form-control" placeholder="Type event city" required name="city"
+          [(ngModel)]="newTodo.city" #address="ngModel"> 
+
+      </div>
+
+      <div class="form-group">
+          <label for="state">State: </label>
+          <input type="text" id="state" class="form-control" placeholder="Type event state" required name="state"
+          [(ngModel)]="newTodo.state" #address="ngModel"> 
+
+      </div>
+
+      <div class="form-group">
+          <label for="zipCode">Zipcode: </label>
+          <input type="number" id="zipCode" class="form-control" placeholder="Type event zipCode" required name="zipCode"
+          [(ngModel)]="newTodo.zipCode" #zipCode="ngModel"> 
+      </div>
+
+      <div class="form-group">
+          <label for="comment">Event description</label>
+          <br>
+          <textarea id="comment" cols="30" rows="10" name="description" required
+          [(ngModel)]="newTodo.description" #description="ngModel">Description</textarea>
+          <div *ngIf="description.errors && description.dirty" class="alert alert-danger">
+              <div [hidden]="!description.errors.required">
+                Description is required.
+              </div>
+          </div>
+        </div>
+
+
+      
+      <button type="submit" class="btn btn-success">Submit</button>
     </form>
   </div>
+
+
+
   <ul class="todo-list">
+    
     <li *ngFor="let todo of todos" [class.completed]="todo.completed === true">
       <div class="todo-row" *ngIf="!editing || editingTodo.id != todo.id">
         <a class="todo-completed" (click)="toggleCompleted(todo)">
           <i class="material-icons toggle-completed-checkbox"></i>
         </a>
+        
         <span class="todo-title">
-          {{todo.title}}
+          title: {{todo.title}}
         </span>
+        <br>
+        <span class="todo-eventDate">
+            eventDate: {{todo.eventDate | date:"yyyy-MM-dd"}}
+        </span>
+        <br>
+        <span class="todo-time">
+            time: {{todo.startTime | date:"HH:mm:ss"}} 
+            ~ {{todo.endTime | date:"HH:mm:ss"}} 
+        </span>
+        <br> 
+        <span class="todo-price">
+            price: {{todo.price}}
+        </span>
+        <br>
+        <span class="todo-description">
+            description: {{todo.description}}
+        </span>
+        <br>
+        <span class="todo-address">
+            address: {{todo.address}}, {{todo.city}}, {{todo.state}}, {{todo.zipCode}}
+        </span>
+
+        <br>
+        <span class="todo-address">
+            createdAt: {{todo.createdAt | date:'medium'}}
+        </span>
+
         <span class="todo-actions">
           <a (click)="editTodo(todo)">
             <i class="material-icons edit">edit</i>
@@ -29,6 +154,7 @@
           </a>
         </span>
       </div>
+
       <div class="todo-edit" *ngIf="editing && editingTodo.id === todo.id">
         <input class="form-control" type="text" [(ngModel)]="editingTodo.title" required>
         <span class="edit-actions">
@@ -40,9 +166,11 @@
           </a>
         </span>
       </div>
+
+
     </li>
   </ul>
   <div class="no-todos" *ngIf="todos && todos.length == 0">
-    <p>No Todos Found!</p>
+    <p>No Ticket Found!</p>
   </div>
 </div>

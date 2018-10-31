@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 
 import { TodoService } from './todo.service';
-
+import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,9 +19,10 @@ import { TodoService } from './todo.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    DlDateTimePickerDateModule,
   ],
-  providers: [TodoService],
+  providers: [TodoService, FormsModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
